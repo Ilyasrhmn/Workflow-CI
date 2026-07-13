@@ -58,7 +58,8 @@ jobs:
         run: |
           mlflow models build-docker \
             -m "runs:/${{ steps.runid.outputs.RUN_ID }}/model" \
-            -n "${{ secrets.DOCKERHUB_USERNAME }}/telco-churn-ci"
+            -n "${{ secrets.DOCKERHUB_USERNAME }}/telco-churn-ci" \
+            --env-manager local
 
       - name: Push Docker image to Docker Hub
         run: |
